@@ -45,10 +45,9 @@ def confusion_matrix(y_true, y_pred, labels):
     df_cm = pd.DataFrame(cm, index=labels,
                          columns=labels)
     plt.figure(figsize=(10, 7))
-	df_cm.pivot(["True Label", "Predicted Label"])
     sns.heatmap(df_cm, annot=True, fmt="d")
-	plt.xlabel("True label")
-    plt.ylabel("Predicted label")
+    plt.xlabel("Predicted label")
+    plt.ylabel("True label")
     plt.show()
 
 
@@ -60,12 +59,13 @@ def precision(pred, labels):
 def recall(pred, labels):
     rec = metrics.recall_score(pred, labels, average='macro')
     return rec
-	
+
+
 def accuracy(pred, labels):
     acc = metrics.accuracy_score(pred, labels)
     return acc
 
-	
+
 def visualize_gridsearch(results, pipe_step, parameter):
     plt.figure(figsize=(13, 13))
     plt.title("Evaluation of the Parameter %s" % (parameter),
